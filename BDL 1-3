@@ -1,0 +1,242 @@
+1.
+
+> show dbs
+admin     0.000GB
+config    0.000GB
+employee  0.000GB
+local     0.000GB
+> use employee
+switched to db employee
+> db.emp_details.insert({_id:3,fname:"abhinav",lname:"p",age:"21",gender:"male",dob:"09-06-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.insert({_id:3,fname:"alok",lname:"p",age:"21",gender:"male",dob:"09-07-2000"});
+WriteResult({
+	"nInserted" : 0,
+	"writeError" : {
+		"code" : 11000,
+		"errmsg" : "E11000 duplicate key error collection: employee.emp_details index: _id_ dup key: { : 3.0 }"
+	}
+})
+> db.emp_details.insert({_id:4,fname:"alok",lname:"p",age:"21",gender:"male",dob:"09-07-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.insert({_id:5,fname:"aditya",lname:"p",age:"21",gender:"male",dob:"09-07-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.insert({_id:6,fname:"aditya",lname:"b",age:"21",gender:"male",dob:"09-07-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.insert({_id:7,fname:"aditya",lname:"sk",age:"21",gender:"male",dob:"09-07-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.insert({_id:8,fname:"ayesha",lname:"sk",age:"21",gender:"female",dob:"03-07-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.insert({_id:9,fname:"aishwarya",lname:"n",age:"21",gender:"female",dob:"04-07-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.insert({_id:10,fname:"aishwarya",lname:"c",age:"21",gender:"female",dob:"05-07-2000"});
+WriteResult({ "nInserted" : 1 })
+> db.emp_details.find({}).pretty()
+{
+	"_id" : 1,
+	"fname" : "abhay",
+	"lname" : "y",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "07-06-2000"
+}
+{
+	"_id" : 2,
+	"fname" : "raghav",
+	"lname" : "a",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "08-06-2000"
+}
+{
+	"_id" : 3,
+	"fname" : "abhinav",
+	"lname" : "p",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-06-2000"
+}
+{
+	"_id" : 4,
+	"fname" : "alok",
+	"lname" : "p",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 5,
+	"fname" : "aditya",
+	"lname" : "p",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 6,
+	"fname" : "aditya",
+	"lname" : "b",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 7,
+	"fname" : "aditya",
+	"lname" : "sk",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 8,
+	"fname" : "ayesha",
+	"lname" : "sk",
+	"age" : "21",
+	"gender" : "female",
+	"dob" : "03-07-2000"
+}
+{
+	"_id" : 9,
+	"fname" : "aishwarya",
+	"lname" : "n",
+	"age" : "21",
+	"gender" : "female",
+	"dob" : "04-07-2000"
+}
+{
+	"_id" : 10,
+	"fname" : "aishwarya",
+	"lname" : "c",
+	"age" : "21",
+	"gender" : "female",
+	"dob" : "05-07-2000"
+}
+
+
+___________________________________________________________________________________________
+2.
+> show collections
+emp_details
+> db.createCollection("test")
+{ "ok" : 1 }
+> show collections
+emp_details
+test
+> db.test.insertMany([{_id:1 ,dept:"ISE"}, {_id:2 ,dept:"ISE"}]);
+{ "acknowledged" : true, "insertedIds" : [ 1, 2 ] }
+> db.test.find({}).pretty()
+{ "_id" : 1, "dept" : "ISE" }
+{ "_id" : 2, "dept" : "ISE" }
+> db.test.drop();
+true
+> show collections
+emp_details
+> db.emp_details.find({}).pretty()
+{
+	"_id" : 1,
+	"fname" : "abhay",
+	"lname" : "y",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "07-06-2000"
+}
+{
+	"_id" : 2,
+	"fname" : "raghav",
+	"lname" : "a",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "08-06-2000"
+}
+{
+	"_id" : 3,
+	"fname" : "abhinav",
+	"lname" : "p",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-06-2000"
+}
+{
+	"_id" : 4,
+	"fname" : "alok",
+	"lname" : "p",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 5,
+	"fname" : "aditya",
+	"lname" : "p",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 6,
+	"fname" : "aditya",
+	"lname" : "b",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 7,
+	"fname" : "aditya",
+	"lname" : "sk",
+	"age" : "21",
+	"gender" : "male",
+	"dob" : "09-07-2000"
+}
+{
+	"_id" : 8,
+	"fname" : "ayesha",
+	"lname" : "sk",
+	"age" : "21",
+	"gender" : "female",
+	"dob" : "03-07-2000"
+}
+{
+	"_id" : 9,
+	"fname" : "aishwarya",
+	"lname" : "n",
+	"age" : "21",
+	"gender" : "female",
+	"dob" : "04-07-2000"
+}
+{
+	"_id" : 10,
+	"fname" : "aishwarya",
+	"lname" : "c",
+	"age" : "21",
+	"gender" : "female",
+	"dob" : "05-07-2000"
+}
+
+_______________________________________________________________________________________________
+
+3.
+
+
+> show collections
+> use employee
+switched to db employee
+> show collections
+emp_details
+> db.emp_details.find({$or:[{fname:"abhay"},{age:"21"}]});
+{ "_id" : 1, "fname" : "abhay", "lname" : "y", "age" : "21", "gender" : "male", "dob" : "07-06-2000" }
+{ "_id" : 2, "fname" : "raghav", "lname" : "a", "age" : "21", "gender" : "male", "dob" : "08-06-2000" }
+{ "_id" : 3, "fname" : "abhinav", "lname" : "p", "age" : "21", "gender" : "male", "dob" : "09-06-2000" }
+{ "_id" : 4, "fname" : "alok", "lname" : "p", "age" : "21", "gender" : "male", "dob" : "09-07-2000" }
+{ "_id" : 5, "fname" : "aditya", "lname" : "p", "age" : "21", "gender" : "male", "dob" : "09-07-2000" }
+{ "_id" : 6, "fname" : "aditya", "lname" : "b", "age" : "21", "gender" : "male", "dob" : "09-07-2000" }
+{ "_id" : 7, "fname" : "aditya", "lname" : "sk", "age" : "21", "gender" : "male", "dob" : "09-07-2000" }
+{ "_id" : 8, "fname" : "ayesha", "lname" : "sk", "age" : "21", "gender" : "female", "dob" : "03-07-2000" }
+{ "_id" : 9, "fname" : "aishwarya", "lname" : "n", "age" : "21", "gender" : "female", "dob" : "04-07-2000" }
+{ "_id" : 10, "fname" : "aishwarya", "lname" : "c", "age" : "21", "gender" : "female", "dob" : "05-07-2000" }
+> db.emp_details.find({$or:[{fname:"abhay"},{age:"20"}]});
+{ "_id" : 1, "fname" : "abhay", "lname" : "y", "age" : "21", "gender" : "male", "dob" : "07-06-2000" }
+
+
+
